@@ -1,0 +1,30 @@
+{
+  "name": "Snowflake Webdesign",
+  "short_name": "Snowflake",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#42afe3",
+  "theme_color": "#42afe3",
+  "description": "Snowflake Webdesign",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/static/images/app-icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "density": 1.5
+    },
+    {
+      "src": "/static/images/app-icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "density": 3.0
+    },
+    {
+      "src": "/static/images/app-icons/icon-288.png",
+      "sizes": "288x288",
+      "type": "image/png",
+      "density": 6.0
+    }
+  ]
+}
