@@ -13,6 +13,15 @@ module.exports = {
         title: {
           type: Sequelize.STRING
         },
+        description: {
+          type: Sequelize.TEXT
+        },
+        ingredients: {
+          type: Sequelize.TEXT
+        },
+        preparingMethod: {
+          type: Sequelize.TEXT
+        },
         userId: {
           type: Sequelize.INTEGER,
           references: {

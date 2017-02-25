@@ -17,7 +17,7 @@ export default new Router({
       component: ListView
     },
     {
-      path: '/recipes/:id',
+      path: '/recipes/:guid',
       name: 'DetailView',
       component: DetailView,
       props: true

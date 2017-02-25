@@ -65,7 +65,10 @@ RecipeController.prototype.update = function (req, res) {
 function recipeParams (req) {
   return {
     userId: req.currentUser.id,
-    title: req.body.title
+    title: req.body.title,
+    description: req.body.description,
+    ingredients: req.body.ingredients,
+    preparingMethod: req.body.preparingMethod
   }
 }
 

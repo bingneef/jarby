@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <section class="container">
-      <h1 class="title">ShoppingList</h1>
+      <h1 class="title">RecipeBook</h1>
     </section>
   </div>
 </template>

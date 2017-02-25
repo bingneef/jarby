@@ -14,6 +14,15 @@ Recipe = database.define('recipes',
     title: {
       type: Sequelize.STRING
     },
+    description: {
+      type: Sequelize.TEXT
+    },
+    ingredients: {
+      type: Sequelize.TEXT
+    },
+    preparingMethod: {
+      type: Sequelize.TEXT
+    },
     guid: {
       type: Sequelize.STRING,
       unique: true
