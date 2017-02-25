@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <app-header></app-header>
     <router-view></router-view>
-    <a class="button" href="#"><i class="fa fa-times"></i>Default Button</a>
   </div>
 </template>
 
 <script>
 require('milligram/dist/milligram.css')
+import AppHeader from './components/AppHeader'
 
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    AppHeader
+  }
 }
 </script>
 

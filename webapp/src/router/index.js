@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from 'components/Hello'
-import Overview from 'components/Overview'
+import ListView from 'components/ListView'
+import DetailView from 'components/DetailView'
 
 Vue.use(Router)
 
@@ -9,13 +9,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      redirect: {name: 'ListView'}
     },
     {
-      path: '/overview',
-      name: 'Overview',
-      component: Overview
+      path: '/recipes',
+      name: 'ListView',
+      component: ListView
+    },
+    {
+      path: '/recipes/:id',
+      name: 'DetailView',
+      component: DetailView,
+      props: true
     }
   ]
 })
