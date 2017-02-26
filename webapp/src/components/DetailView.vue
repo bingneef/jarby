@@ -103,7 +103,6 @@ export default {
       })
       .catch(error => {
         alert(error)
-        this.viewMode = true
       })
     },
     edit () {
