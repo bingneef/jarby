@@ -1,5 +1,17 @@
 <template>
   <section class="container">
+    <label for="firstName">Name</label>
+    <input
+      name="firstName"
+      type="text"
+      v-model="user.firstName" />
+
+    <label for="lastName">Last name</label>
+    <input
+      name="lastName"
+      type="text"
+      v-model="user.lastName" />
+
     <label for="email">Email</label>
     <input
       name="email"
@@ -8,23 +20,29 @@
 
     <label for="password">Password</label>
     <input
-      name="password"
+      name="lastName"
       type="password"
       v-model="user.password" />
 
+    <label for="passwordCheck">Password (check)</label>
+    <input
+      name="passwordCheck"
+      type="password"
+      v-model="user.passwordCheck" />
+
     <div
-      class="loginButtonRow">
+      class="signUpButtonRow">
       <button
         class="button button-outline"
-        v-on:click="signUp">Sign up
+        v-on:click="toLoginView">Back
       </button>
 
       <button
-        id="loginButton"
         class="button"
-        v-on:click="loginUser">Login
+        v-on:click="signUp">Sign Up
       </button>
     </div>
+
 
   </section>
 </template>
@@ -44,6 +62,17 @@ export default {
     }
   },
   methods: {
+    signUp () {
+      let params = this.user
+      axios.post('api/v1/sign-up', params)
+      .then(response => {
+        console.log(response)
+        this.loginUser()
+      })
+      .catch(error => {
+        alert(error)
+      })
+    },
     loginUser () {
       let params = this.user
       axios.post('/api/v1/login', params)
@@ -57,15 +86,9 @@ export default {
         alert(error)
       })
     },
-    goToListView () {
+    toLoginView () {
       let routeOptions = {
-        name: 'ListView'
-      }
-      router.push(routeOptions)
-    },
-    signUp () {
-      let routeOptions = {
-        name: 'SignUpView'
+        name: 'Login'
       }
       router.push(routeOptions)
     }

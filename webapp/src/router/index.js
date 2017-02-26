@@ -4,6 +4,7 @@ import ListView from 'components/ListView'
 import DetailView from 'components/DetailView'
 import Login from 'components/Login'
 import AddView from 'components/AddView'
+import SignUpView from 'components/SignUpView'
 
 Vue.use(Router)
 
@@ -33,6 +34,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/sign-up',
+      name: 'SignUpView',
+      component: SignUpView
     }
   ]
 })
