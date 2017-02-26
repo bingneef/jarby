@@ -20,7 +20,7 @@ AuthenticateHelper.prototype.authenticate = function (req, res, next) {
       }
     })
   } catch(exception) {
-    res.sendStatus(400);
+    res.sendStatus(401);
   };
 }
 
