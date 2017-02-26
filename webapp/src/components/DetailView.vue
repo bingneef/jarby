@@ -95,13 +95,11 @@ export default {
   },
   methods: {
     save () {
-      console.log(this.guid)
       let params = this.recipe
       axios.put('/api/v1/recipes/' + this.recipe.guid, params)
       .then(response => {
         this.recipe = response.data
         this.viewMode = true
-        console.log(this.guid)
       })
       .catch(error => {
         alert(error)
