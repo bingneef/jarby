@@ -100,6 +100,7 @@ export default {
       .then(response => {
         this.recipe = response.data
         this.viewMode = true
+        console.log(this.guid)
       })
       .catch(error => {
         alert(error)

@@ -6,7 +6,7 @@ import store from './store'
 import router from './router'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:5000'
+axios.defaults.baseURL = 'http://192.168.0.114:5000'
 axios.defaults.headers.common['Authorization'] = 'Token token=WLEQXlRJtHIHnqCDYqW267Dp'
 
 /* eslint-disable no-new */
