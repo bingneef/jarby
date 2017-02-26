@@ -7,7 +7,22 @@ import router from './router'
 import axios from 'axios'
 
 axios.defaults.baseURL = 'http://192.168.0.114:5000'
-axios.defaults.headers.common['Authorization'] = 'Token token=WLEQXlRJtHIHnqCDYqW267Dp'
+
+// Add a response interceptor
+
+axios.interceptors.response.use((response) => {
+  console.log(response.status)
+  return response
+}, (error) => {
+  if (error.response.status === 401) {
+    let routeOptions = {
+      name: 'Login'
+    }
+    router.push(routeOptions)
+    return
+  }
+  return Promise.reject(error)
+})
 
 /* eslint-disable no-new */
 new Vue({
