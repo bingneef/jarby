@@ -39,7 +39,9 @@ export default {
       let params = this.user
       axios.post('/api/v1/login', params)
       .then(response => {
-        axios.defaults.headers.common['Authorization'] = 'Token token=' + response.data.apiToken
+        let apiToken = response.data.apiToken
+        localStorage.setItem('apiToken', apiToken)
+        axios.defaults.headers.common['Authorization'] = 'Token token=' + apiToken
         this.goToListView()
       })
       .catch(error => {

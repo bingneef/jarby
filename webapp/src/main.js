@@ -7,11 +7,9 @@ import router from './router'
 import axios from 'axios'
 
 axios.defaults.baseURL = 'http://192.168.0.114:5000'
-
-// Add a response interceptor
+axios.defaults.headers.common['Authorization'] = 'Token token=' + localStorage.getItem('apiToken')
 
 axios.interceptors.response.use((response) => {
-  console.log(response.status)
   return response
 }, (error) => {
   if (error.response.status === 401) {
