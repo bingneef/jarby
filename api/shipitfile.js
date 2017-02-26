@@ -7,8 +7,8 @@ module.exports = function (shipit) {
   shipit.initConfig({
     default: {
       workspace: 'tmp',
-      deployTo: '/var/www/bolts-api',
-      repositoryUrl: 'https://bingneef@bitbucket.org/snowflakeapps/bolts.git',
+      deployTo: '/var/www/recipe-book-api',
+      repositoryUrl: 'git@github.com:bingneef/jarby.git',
       ignores: ['.git', 'node_modules'],
       keepReleases: 10,
       shallowClone: true,
