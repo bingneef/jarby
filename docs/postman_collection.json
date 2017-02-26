@@ -26,7 +26,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:5000/api/v1/login",
+						"url": "http://192.168.0.114:5000/api/v1/login",
 						"method": "POST",
 						"header": [
 							{
@@ -46,7 +46,7 @@
 				{
 					"name": "Logout",
 					"request": {
-						"url": "http://localhost:5000/api/v1/logout",
+						"url": "http://192.168.0.114:5000/api/v1/logout",
 						"method": "POST",
 						"header": [
 							{
@@ -71,7 +71,7 @@
 				{
 					"name": "CurrentUser",
 					"request": {
-						"url": "http://localhost:5000/api/v1/current_user",
+						"url": "http://192.168.0.114:5000/api/v1/current_user",
 						"method": "GET",
 						"header": [
 							{
@@ -108,7 +108,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:5000/api/v1/sign-up",
+						"url": "http://192.168.0.114:5000/api/v1/sign-up",
 						"method": "POST",
 						"header": [
 							{
@@ -140,7 +140,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:5000/api/v1/current_user",
+						"url": "http://192.168.0.114:5000/api/v1/current_user",
 						"method": "PUT",
 						"header": [
 							{
@@ -183,7 +183,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:5000/api/v1/recipes",
+						"url": "http://192.168.0.114:5000/api/v1/recipes",
 						"method": "GET",
 						"header": [
 							{
@@ -220,7 +220,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:5000/api/v1/recipes",
+						"url": "http://192.168.0.114:5000/api/v1/recipes",
 						"method": "POST",
 						"header": [
 							{
@@ -245,7 +245,7 @@
 				{
 					"name": "Show",
 					"request": {
-						"url": "http://localhost:5000/api/v1/recipes/{{recipeToken}}",
+						"url": "http://192.168.0.114:5000/api/v1/recipes/{{recipeToken}}",
 						"method": "GET",
 						"header": [
 							{
@@ -270,7 +270,7 @@
 				{
 					"name": "Update",
 					"request": {
-						"url": "http://localhost:5000/api/v1/recipes/{{recipeToken}}",
+						"url": "http://192.168.0.114:5000/api/v1/recipes/{{recipeToken}}",
 						"method": "PUT",
 						"header": [
 							{
@@ -295,7 +295,7 @@
 				{
 					"name": "Destroy",
 					"request": {
-						"url": "http://localhost:5000/api/v1/recipes/{{recipeToken}}",
+						"url": "http://192.168.0.114:5000/api/v1/recipes/{{recipeToken}}",
 						"method": "DELETE",
 						"header": [
 							{
