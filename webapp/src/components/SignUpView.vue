@@ -86,6 +86,12 @@ export default {
         alert(error)
       })
     },
+    goToListView () {
+      let routeOptions = {
+        name: 'ListView'
+      }
+      router.push(routeOptions)
+    },
     toLoginView () {
       let routeOptions = {
         name: 'Login'
