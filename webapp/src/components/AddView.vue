@@ -8,43 +8,11 @@
 
       <button
         class="button button-outline"
-        v-on:click="deleteRecipe">Delete
-      </button>
-
-      <button
-        class="button button-outline"
-        v-if="viewMode"
-        v-on:click="edit">Edit
-      </button>
-
-      <button
-        class="button button-outline"
-        v-else
         v-on:click="save">Save
       </button>
     </div>
 
     <div
-      v-if="viewMode">
-
-      <h1>{{recipe.title}}</h1>
-      <h4>{{recipe.description}}</h4>
-
-      <hr>
-
-      <h2>Ingredients</h2>
-      <div
-        v-html="compiledIngredients"></div>
-
-      <hr>
-
-      <h2>Preparing Method</h2>
-      <div
-        v-html="compiledPreparingMethod"></div>
-    </div>
-
-    <div
-      v-else>
       <label for="titleField">Title</label>
       <input
         name="titleField"
@@ -72,56 +40,28 @@
 
 <script>
 import axios from 'axios'
-import marked from 'marked'
 import router from '../router'
 
 export default {
-  name: 'detail-view',
-  props: ['guid'],
+  name: 'add-view',
   data () {
     return {
-      viewMode: true,
       recipe: {}
     }
   },
-  computed: {
-    compiledIngredients () {
-      if (!this.recipe.ingredients) {
-        return
-      }
-      return marked(this.recipe.ingredients, { sanitize: true })
-    },
-    compiledPreparingMethod () {
-      if (!this.recipe.preparingMethod) {
-        return
-      }
-      return marked(this.recipe.preparingMethod, { sanitize: true })
-    }
+  mounted () {
   },
   methods: {
     save () {
       let params = this.recipe
-      axios.put('/api/v1/recipes/' + this.recipe.guid, params)
+      axios.post('/api/v1/recipes/', params)
       .then(response => {
         this.recipe = response.data
-        this.viewMode = true
-      })
-      .catch(error => {
-        alert(error)
-      })
-    },
-    deleteRecipe () {
-      let params = this.recipe
-      axios.delete('/api/v1/recipes/' + this.recipe.guid, params)
-      .then(response => {
         this.backToList()
       })
       .catch(error => {
         alert(error)
       })
-    },
-    edit () {
-      this.viewMode = false
     },
     backToList () {
       let routeOptions = {
@@ -129,13 +69,6 @@ export default {
       }
       router.push(routeOptions)
     }
-  },
-  beforeRouteEnter (to, from, next) {
-    axios.get('/api/v1/recipes/' + to.params.guid).then(response => {
-      next(vm => {
-        vm.recipe = response.data
-      })
-    })
   }
 }
 </script>
