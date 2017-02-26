@@ -62,7 +62,7 @@
         name="preparingMethodField"
         v-model="recipe.preparingMethod"></textarea>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
