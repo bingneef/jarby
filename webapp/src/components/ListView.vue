@@ -4,6 +4,11 @@
       <span class="recipe-title">{{recipe.title}}</span>
       <span class="recipe-action"><i class="fa fa-chevron-right"></i></span>
     </div>
+
+    <button
+      class="button button-outline"
+      v-on:click="gotoAddRecipe">Add
+    </button>
   </section>
 </template>
 
@@ -19,6 +24,12 @@ export default {
     }
   },
   methods: {
+    gotoAddRecipe () {
+      let routeOptions = {
+        name: 'AddView'
+      }
+      router.push(routeOptions)
+    },
     gotoRecipe (guid) {
       let routeOptions = {
         name: 'DetailView',
@@ -53,5 +64,8 @@ export default {
     background: #FAFAFA
   .recipe-title
     flex: 1
-
+.button.button-outline
+  position: fixed
+  bottom: 0
+  right: $dimension-space
 </style>
