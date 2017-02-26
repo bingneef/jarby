@@ -8,6 +8,11 @@
 
       <button
         class="button button-outline"
+        v-on:click="deleteRecipe">Delete
+      </button>
+
+      <button
+        class="button button-outline"
         v-if="viewMode"
         v-on:click="edit">Edit
       </button>
@@ -100,6 +105,16 @@ export default {
       .then(response => {
         this.recipe = response.data
         this.viewMode = true
+      })
+      .catch(error => {
+        alert(error)
+      })
+    },
+    deleteRecipe () {
+      let params = this.recipe
+      axios.delete('/api/v1/recipes/' + this.recipe.guid, params)
+      .then(response => {
+        this.backToList()
       })
       .catch(error => {
         alert(error)
