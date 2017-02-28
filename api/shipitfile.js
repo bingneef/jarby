@@ -37,7 +37,7 @@ module.exports = function (shipit) {
   });
 
   shipit.blTask('db:migrate', function() {
-    return shipit.remote('cd /var/www/bolts-api/current && sequelize db:migrate');
+    return shipit.remote('cd /var/www/recipe-book-api/current && sequelize db:migrate');
   });
 
   shipit.on('published', function() {
