@@ -46,6 +46,9 @@ User.hook('beforeCreate', (user, options) => {
 });
 
 User.convertPasswordToHash = (password) => {
+  if (!password) {
+    return
+  }
   return crypto.createHmac('sha256', env.secret).update(password).digest('hex');
 }
 
