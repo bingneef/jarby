@@ -8,6 +8,10 @@ router.get('', (req, res) => {
   res.send({message: 'Hello! The API is at http://localhost:' + port + '/api'});
 });
 
+router.get('socket.io/*', (req, res, next) => {
+  next();
+});
+
 router.get('/status', (req, res) => {
   res.send({message: 'Running smoothly'});
 });
