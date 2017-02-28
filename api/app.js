@@ -38,9 +38,11 @@ app.use('/alive', (req, res) => {
 port = process.env.PORT || 5000;
 
 httpServer = http.createServer(app);
+
+// Add sockets
+require('./socket')
 httpServer.listen(port, '0.0.0.0');
 
-require('./socket')
 
 console.log("Server running. Listening on port " + port + ".");
 console.log("Version: " + constants.version);
