@@ -40,6 +40,8 @@ port = process.env.PORT || 5000;
 httpServer = http.createServer(app);
 httpServer.listen(port, '0.0.0.0');
 
+require('./socket')
+
 console.log("Server running. Listening on port " + port + ".");
 console.log("Version: " + constants.version);
 module.exports = app
