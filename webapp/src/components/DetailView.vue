@@ -150,4 +150,8 @@ section
     display: flex
     justify-content: space-between
 
+  .button
+    padding-left: 2 * $dimension-space
+    padding-right: 2 * $dimension-space
+
 </style>
