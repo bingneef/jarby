@@ -6,7 +6,7 @@ import store from './store'
 import router from './router'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://recipe-book-api.snowflakewebdesign.nl'
+axios.defaults.baseURL = 'https://recipe-book-api.snowflakewebdesign.nl'
 axios.defaults.headers.common['Authorization'] = 'Token token=' + localStorage.getItem('apiToken')
 
 axios.interceptors.response.use((response) => {
