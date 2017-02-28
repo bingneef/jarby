@@ -2,15 +2,18 @@
 require('app-module-path').addPath(__dirname);
 
 // DEPENDENCIES
-http          = require('http');
-express       = require('express');
-cors          = require('cors');
-bodyParser    = require('body-parser');
-morgan        = require('morgan');
+const
+  http          = require('http'),
+  express       = require('express'),
+  cors          = require('cors'),
+  bodyParser    = require('body-parser'),
+  morgan        = require('morgan'),
+  constants     = require('config/constants');
 
-AuthenticationRoutes  = require('routes').AuthenticationRoutes;
-RecipeRoutes          = require('routes').RecipeRoutes;
-dbConnection          = require('databaseConnection');
+const
+  AuthenticationRoutes  = require('routes').AuthenticationRoutes,
+  RecipeRoutes          = require('routes').RecipeRoutes,
+  dbConnection          = require('databaseConnection');
 
 // Only do locus for non-production.
 if (process.env.NODE_ENV != 'production') {
@@ -38,4 +41,5 @@ httpServer = http.createServer(app);
 httpServer.listen(port, '0.0.0.0');
 
 console.log("Server running. Listening on port " + port + ".");
+console.log("Version: " + constants.version);
 module.exports = app
