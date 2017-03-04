@@ -1,5 +1,6 @@
 // SETUP correct routing for local exports
 require('app-module-path').addPath(__dirname);
+const path = require('path');
 
 // DEPENDENCIES
 const
@@ -30,6 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, '/views'));
 
 app.use(passport.initialize());
 
