@@ -41,9 +41,9 @@ var getUserOfToken = (type, identifier, email, done) => {
         user.addOauth(oauth).then((user) => {
           return done(null, user);
         })
-      });
-    });
-  });
+      }).catch(() => done('Error', null));
+    }).catch(() => done('Error', null));
+  }).catch(() => done('Error', null));
 }
 passport.use(new GitHubStrategy({
     clientID:     env.oauth.github.clientID,

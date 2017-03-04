@@ -13,7 +13,7 @@ const
   constants     = require('config/constants');
 
 const
-  OauthRoutes  = require('routes').OauthRoutes,
+  OauthRoutes           = require('routes').OauthRoutes,
   AuthenticationRoutes  = require('routes').AuthenticationRoutes,
   RecipeRoutes          = require('routes').RecipeRoutes,
   dbConnection          = require('databaseConnection');
