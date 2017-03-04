@@ -12,6 +12,12 @@ AuthenticationController.prototype.currentUser = function (req, res) {
 }
 
 AuthenticationController.prototype.login = function (req, res) {
+  if (!req.body.email || !req.body.password) {
+    res.status(422);
+    res.send({message: "INVALID_CREDENTIALS"});
+    return
+  }
+
   User.findOne({
     where: {
       email: req.body.email,

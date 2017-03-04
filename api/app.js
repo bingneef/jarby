@@ -8,9 +8,11 @@ const
   cors          = require('cors'),
   bodyParser    = require('body-parser'),
   morgan        = require('morgan'),
+  passport      = require('./auth'),
   constants     = require('config/constants');
 
 const
+  OauthRoutes  = require('routes').OauthRoutes,
   AuthenticationRoutes  = require('routes').AuthenticationRoutes,
   RecipeRoutes          = require('routes').RecipeRoutes,
   dbConnection          = require('databaseConnection');
@@ -27,7 +29,11 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.set('view engine', 'pug')
 
+app.use(passport.initialize());
+
+app.use(OauthRoutes);
 app.use('/api/v1', [AuthenticationRoutes, RecipeRoutes]);
 
 // Check if the server is running

@@ -26,6 +26,26 @@
       </button>
     </div>
 
+    <div
+      class="loginButtonRow">
+      <button
+        class="button button-outline"
+        v-on:click="oauthLogin('facebook')">Facebook
+      </button>
+
+      <button
+        id="loginButton"
+        class="button button-outline"
+        v-on:click="oauthLogin('google')">Google
+      </button>
+
+      <button
+        id="loginButton"
+        class="button button-outline"
+        v-on:click="oauthLogin('github')">Github
+      </button>
+    </div>
+
   </section>
 </template>
 
@@ -49,8 +69,7 @@ export default {
       axios.post('/api/v1/login', params)
       .then(response => {
         let apiToken = response.data.apiToken
-        localStorage.setItem('apiToken', apiToken)
-        axios.defaults.headers.common['Authorization'] = 'Token token=' + apiToken
+        this.setCredentials(apiToken)
         this.goToListView()
       })
       .catch(error => {
@@ -63,11 +82,38 @@ export default {
       }
       router.push(routeOptions)
     },
+    oauthLogin (type) {
+      let strWindowFeatures = 'scrollbars=yes,width=400,height=800'
+      let windowObjectReference = window.open(process.env.SERVER_ORIGIN + '/auth/' + type, 'Oauth', strWindowFeatures)
+
+      let interval = setInterval(() => {
+        if (windowObjectReference.closed) {
+          window.removeEventListener('message', this.listenToOauthDialog, false)
+          clearInterval(interval)
+        }
+      }, 1000)
+
+      window.addEventListener('message', this.listenToOauthDialog, false)
+    },
+    listenToOauthDialog (e) {
+      if (e.origin !== process.env.SERVER_ORIGIN) {
+        return
+      }
+
+      let apiToken = e.data.apiToken
+      this.setCredentials(apiToken)
+      window.removeEventListener('message', this.listenToOauthDialog, false)
+      this.goToListView()
+    },
     signUp () {
       let routeOptions = {
         name: 'SignUpView'
       }
       router.push(routeOptions)
+    },
+    setCredentials (apiToken) {
+      localStorage.setItem('apiToken', apiToken)
+      axios.defaults.headers.common['Authorization'] = 'Token token=' + apiToken
     }
   }
 }

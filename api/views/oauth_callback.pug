@@ -1,0 +1,4 @@
+p Redirecting back..
+script(type='text/javascript').
+  window.opener.postMessage({apiToken: '#{apiToken}'}, '#{origin}');
+  window.close()
