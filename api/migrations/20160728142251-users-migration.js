@@ -16,8 +16,7 @@ module.exports = {
           unique: true
         },
         password: {
-          type: Sequelize.STRING,
-          allowNull: false
+          type: Sequelize.STRING
         },
         apiToken: {
           type: Sequelize.STRING,

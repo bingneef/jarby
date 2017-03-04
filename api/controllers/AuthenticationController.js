@@ -42,6 +42,12 @@ AuthenticationController.prototype.login = function (req, res) {
 }
 
 AuthenticationController.prototype.signUp = function (req, res) {
+  if (!req.body.email || !req.body.password) {
+    res.status(422);
+    res.send({message: "INCOMPLETE_CREDENTIALS"});
+    return
+  }
+
   User.create(userParams(req)).then( (user) => {
     res.send(serializer.serialize(user));
   }).catch( (error) => {
