@@ -28,7 +28,6 @@
     "mysql": "^2.11.1",
     "object-sizeof": "^1.0.10",
     "passport": "^0.3.2",
-    "passport-facebook": "^2.1.1",
     "passport-github2": "^0.1.10",
     "passport-google-oauth2": "^0.1.6",
     "promise": "^7.1.1",

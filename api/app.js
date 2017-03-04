@@ -8,7 +8,7 @@ const
   cors          = require('cors'),
   bodyParser    = require('body-parser'),
   morgan        = require('morgan'),
-  passport      = require('./auth'),
+  passport      = require('./oauth'),
   constants     = require('config/constants');
 
 const
