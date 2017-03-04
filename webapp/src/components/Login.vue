@@ -13,34 +13,26 @@
       v-model="user.password" />
 
     <div
-      class="loginButtonRow">
+      class="button-row">
       <button
         class="button button-outline"
         v-on:click="signUp">Sign up
       </button>
 
       <button
-        id="loginButton"
         class="button"
         v-on:click="loginUser">Login
       </button>
     </div>
 
     <div
-      class="loginButtonRow">
+      class="button-row">
       <button
-        class="button button-outline"
-        v-on:click="oauthLogin('facebook')">Facebook
-      </button>
-
-      <button
-        id="loginButton"
         class="button button-outline"
         v-on:click="oauthLogin('google')">Google
       </button>
 
       <button
-        id="loginButton"
         class="button button-outline"
         v-on:click="oauthLogin('github')">Github
       </button>
@@ -83,7 +75,7 @@ export default {
       router.push(routeOptions)
     },
     oauthLogin (type) {
-      let strWindowFeatures = 'scrollbars=yes,width=400,height=800'
+      let strWindowFeatures = 'scrollbars=yes,width=500,height=500'
       let windowObjectReference = window.open(process.env.SERVER_ORIGIN + '/auth/' + type, 'Oauth', strWindowFeatures)
 
       let interval = setInterval(() => {
@@ -120,9 +112,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  .loginButtonRow
+  .button-row
     display: flex
     justify-content: flex-end
-  #loginButton
-    margin-left: 12px
+
+    .button:not(:first-of-type)
+      margin-left: 12px
 </style>
