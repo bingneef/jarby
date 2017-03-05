@@ -1,5 +1,5 @@
 var passport = require('passport')
-  , GitHubStrategy = require('passport-github2').Strategy
+  , GitHubStrategy = require('passport-github').Strategy
   , GoogleStrategy = require( 'passport-google-oauth2' ).Strategy
   , User = require('./models').User
   , env = require('./config/env');
@@ -48,7 +48,8 @@ var getUserOfToken = (type, identifier, email, done) => {
 passport.use(new GitHubStrategy({
     clientID:     env.oauth.github.clientID,
     clientSecret: env.oauth.github.clientSecret,
-    callbackURL:  env.serverOrigin + '/auth/github/callback'
+    callbackURL:  env.serverOrigin + '/auth/github/callback',
+    scope: [ 'user:email' ]
   },
   function(accessToken, refreshToken, profile, done) {
     getUserOfToken('github', profile.id, profile.emails[0].value, done)
@@ -59,9 +60,9 @@ passport.use(new GoogleStrategy({
     clientID:     env.oauth.google.clientID,
     clientSecret: env.oauth.google.clientSecret,
     callbackURL:  env.serverOrigin + '/auth/google/callback',
-    passReqToCallback: true
+    scope: [ 'https://www.googleapis.com/auth/userinfo.email' ]
   },
-  function(request, accessToken, refreshToken, profile, done) {
+  function(accessToken, refreshToken, profile, done) {
     getUserOfToken('google', profile.id, profile.email, done)
   }
 ));

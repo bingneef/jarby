@@ -10,7 +10,7 @@ const
 
 var passport = require('./../oauth')
 router.get('/auth/github',
-  passport.authenticate('github', { scope: [ 'user:email' ] }));
+  passport.authenticate('github'));
 
 router.get('/auth/github/callback', 
   passport.authenticate('github', {session: false}),
@@ -20,9 +20,7 @@ router.get('/auth/github/callback',
   });
 
 router.get('/auth/google',
-  passport.authenticate('google', { scope: 
-    [ 'https://www.googleapis.com/auth/userinfo.email']
-  })
+  passport.authenticate('google')
 );
 
 router.get('/auth/google/callback', 
