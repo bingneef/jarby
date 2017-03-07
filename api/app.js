@@ -10,7 +10,7 @@ const
   bodyParser    = require('body-parser'),
   morgan        = require('morgan'),
   passport      = require('./oauth'),
-  constants     = require('config/constants');
+  constants     = require('./config/constants');
 
 const
   OauthRoutes           = require('routes').OauthRoutes,

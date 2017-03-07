@@ -21,6 +21,9 @@ export default {
   .no-scrolling
     overflow: hidden
 
+  html, body, #app
+    height: 100%
+
   @import './stylesheets/theme_overrides.sass'
   @import './stylesheets/vars.sass'
   @import './stylesheets/mixins.sass'

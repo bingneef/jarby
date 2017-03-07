@@ -52,6 +52,16 @@ export default {
 
 <style lang="sass" scoped>
 @import '../stylesheets/vars'
+
+section
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 1
+  background: white
+
 .recipe-line
   padding: $dimension-space
   border-bottom: 1px solid $color-divider

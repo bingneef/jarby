@@ -144,7 +144,9 @@ export default {
 <style lang="sass" scoped>
 @import '../stylesheets/vars'
 section
-  margin-top: $dimension-space
+  padding-top: $dimension-space
+  z-index: 2
+  background: white
 
   .action-row
     display: flex

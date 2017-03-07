@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import RecipeView from 'components/RecipeView'
 import ListView from 'components/ListView'
 import DetailView from 'components/DetailView'
 import Login from 'components/Login'
@@ -21,14 +22,20 @@ export default new Router({
     },
     {
       path: '/recipes',
-      name: 'ListView',
-      component: ListView
-    },
-    {
-      path: '/recipes/:guid',
-      name: 'DetailView',
-      component: DetailView,
-      props: true
+      component: RecipeView,
+      children: [
+        {
+          path: '',
+          name: 'ListView',
+          component: ListView
+        },
+        {
+          path: ':guid',
+          name: 'DetailView',
+          component: DetailView,
+          props: true
+        }
+      ]
     },
     {
       path: '/login',
