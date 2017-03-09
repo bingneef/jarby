@@ -1,6 +1,6 @@
 jsonfile = require('jsonfile');
 
-file = './config/env.json';
+file = __dirname + '/env.json';
 env = jsonfile.readFileSync(file);
 
 

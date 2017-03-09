@@ -1,6 +1,6 @@
 jsonfile = require('jsonfile');
 
-file = 'config/config.json';
+file = __dirname + '/config.json';
 dbConfig = jsonfile.readFileSync(file);
 
 
