@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import IndexView from 'components/IndexView'
 import RecipeView from 'components/RecipeView'
 import ListView from 'components/ListView'
 import DetailView from 'components/DetailView'
@@ -13,34 +14,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/create-recipe',
-      name: 'AddView',
-      component: AddView
-    },
-    {
-      path: '/',
-      redirect: {name: 'ListView'},
-      name: 'RootUrl'
-
-    },
-    {
-      path: '/recipes',
-      component: RecipeView,
-      children: [
-        {
-          path: '',
-          name: 'ListView',
-          component: ListView
-        },
-        {
-          path: ':guid',
-          name: 'DetailView',
-          component: DetailView,
-          props: true
-        }
-      ]
-    },
-    {
       path: '/login',
       name: 'Login',
       component: Login
@@ -51,9 +24,41 @@ export default new Router({
       component: SignUpView
     },
     {
-      path: '/profile',
-      name: 'ProfilePage',
-      component: ProfilePage
+      path: '/',
+      component: IndexView,
+      children: [
+        {
+          path: '/create-recipe',
+          name: 'AddView',
+          component: AddView
+        },
+        {
+          path: '',
+          redirect: {name: 'ListView'}
+        },
+        {
+          path: '/recipes',
+          component: RecipeView,
+          children: [
+            {
+              path: '',
+              name: 'ListView',
+              component: ListView
+            },
+            {
+              path: ':guid',
+              name: 'DetailView',
+              component: DetailView,
+              props: true
+            }
+          ]
+        },
+        {
+          path: '/profile',
+          name: 'ProfilePage',
+          component: ProfilePage
+        }
+      ]
     }
   ]
 })

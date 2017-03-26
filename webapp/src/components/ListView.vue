@@ -1,14 +1,11 @@
 <template>
   <section class="list-view">
-    <input 
-      type="text" 
+    <input
+      type="text"
       class="search-field"
       placeholder="Search"
       v-model="searchValue"
     />
-
-
-
 
     <div class="recipe-line" v-for="recipe in filteredRecipes" v-on:click="gotoRecipe(recipe.guid)">
       <span class="recipe-title">{{recipe.title}}</span>
@@ -109,7 +106,7 @@ section
   background-image: url('../assets/images/search-icon.png')
   background-repeat: no-repeat
   background-size: contain
-  background-position: left 
+  background-position: left
   padding-left: 48px
 
 </style>
