@@ -19,7 +19,9 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: {name: 'ListView'}
+      redirect: {name: 'ListView'},
+      name: 'RootUrl'
+
     },
     {
       path: '/recipes',
