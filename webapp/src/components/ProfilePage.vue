@@ -1,21 +1,20 @@
 <template>
   <section class="container">
-    <button
-        class="button button-outline"
-        v-on:click="logOut">Log Out
-      </button>
-    <label for="email">Email</label>
-    <input
-      name="email"
-      type="text"
-      v-model="currentUser.email" />
-
-    <label for="password">Password</label>
-    <input
-      name="password"
-      type="password"
-      v-model="currentUser.password" />
-
+    <div id="profile_page">
+      <img id="profile_pic" v-bind:src="currentUser.avatarUrl"/>
+      <label for="firstName">First name</label>
+      <span>{{ currentUser.firstName }}</span>
+      <label for="lastName">Last name</label>
+      <span>{{ currentUser.lastName }}</span>
+      <label for="email">Email</label>
+      <span>{{ currentUser.email }}</span>
+      <div id="logout">
+        <button
+            class="button button-outline"
+            v-on:click="logOut">Log Out
+        </button>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -59,5 +58,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
+  #profile_page {padding-top: 20px;}
+  #logout {padding-top: 10px;}
+  #profile_pic {height: 128px; width: 128px;}
 </style>

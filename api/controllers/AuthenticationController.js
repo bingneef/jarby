@@ -8,6 +8,8 @@ const
 var AuthenticationController = function () {};
 
 AuthenticationController.prototype.currentUser = function (req, res) {
+  console.log('=============> AuthenticationController currentUser')
+  console.log(req.currentUser)
   res.send(serializer.serialize(req.currentUser));
 }
 
