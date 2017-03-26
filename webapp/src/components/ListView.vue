@@ -1,6 +1,16 @@
 <template>
   <section class="list-view">
-    <div class="recipe-line" v-for="recipe in recipes" v-on:click="gotoRecipe(recipe.guid)">
+    <input 
+      type="text" 
+      class="search-field"
+      placeholder="Search"
+      v-model="searchValue"
+    />
+
+
+
+
+    <div class="recipe-line" v-for="recipe in filteredRecipes" v-on:click="gotoRecipe(recipe.guid)">
       <span class="recipe-title">{{recipe.title}}</span>
       <span class="recipe-action"><i class="fa fa-chevron-right"></i></span>
     </div>
@@ -20,7 +30,23 @@ export default {
   name: 'list-view',
   data () {
     return {
-      recipes: []
+      recipes: [],
+      searchValue: ''
+    }
+  },
+  computed: {
+    filteredRecipes () {
+      if (!this.searchValue || this.searchValue === '') {
+        return this.recipes
+      }
+      return this.recipes.filter((recipe) => {
+        var notInTitle = recipe.title.toLowerCase().indexOf(this.searchValue) === -1
+        if (notInTitle) {
+          return null
+        } else {
+          return recipe
+        }
+      })
     }
   },
   methods: {
@@ -78,4 +104,12 @@ section
   position: fixed
   bottom: 0
   right: $dimension-space
+
+.search-field
+  background-image: url('../assets/images/search-icon.png')
+  background-repeat: no-repeat
+  background-size: contain
+  background-position: left 
+  padding-left: 48px
+
 </style>
