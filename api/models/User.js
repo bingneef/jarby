@@ -33,6 +33,7 @@ User = database.define('users',
     active: {
       type: Sequelize.BOOLEAN
     },
+    avatarUrl: Sequelize.STRING
   });
 
 SequelizeTokenify.tokenify(User, {
