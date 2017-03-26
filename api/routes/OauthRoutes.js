@@ -16,7 +16,11 @@ router.get('/auth/github/callback',
   passport.authenticate('github', {session: false}),
   (req, res) => {
     let user = req.user
-    res.render('oauth_callback', { apiToken: user.apiToken, origin: env.frontEndOrigin})
+    user.update({
+      active: true
+    }).then((user) => {
+      res.render('oauth_callback', { apiToken: user.apiToken, origin: env.frontEndOrigin})
+    })
   });
 
 router.get('/auth/google',
@@ -27,7 +31,11 @@ router.get('/auth/google/callback',
   passport.authenticate('google', {session: false}),
   (req, res) => {
     let user = req.user
-    res.render('oauth_callback', { apiToken: user.apiToken, origin: env.frontEndOrigin})
+    user.update({
+      active: true
+    }).then((user) => {
+      res.render('oauth_callback', { apiToken: user.apiToken, origin: env.frontEndOrigin})
+    })
   });
 
 module.exports = router
