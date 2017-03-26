@@ -1,12 +1,11 @@
-const
-  Models = require('models');
+const User = require('models').User;
 
 var AuthenticateHelper = function () {};
 
 AuthenticateHelper.prototype.authenticate = function (req, res, next) {
   try {
     apiToken = req.headers['authorization'].split('=')[1];
-    Models.User.findOne({
+    User.findOne({
       where: {
         apiToken: apiToken,
         active: true
