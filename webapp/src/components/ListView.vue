@@ -1,6 +1,13 @@
 <template>
-  <section class="list-view">
-    <div class="recipe-line" v-for="recipe in recipes" v-on:click="gotoRecipe(recipe.guid)">
+  <section class="list-view">    
+    <div class="search-line">
+      <label for="searchField">search</label>
+        <input
+          name="searchField"
+          type="text"
+          v-model="searchValue" />
+    </div>
+    <div class="recipe-line" v-for="recipe in filteredRecipes" v-on:click="gotoRecipe(recipe.guid)">
       <span class="recipe-title">{{recipe.title}}</span>
       <span class="recipe-action"><i class="fa fa-chevron-right"></i></span>
     </div>
@@ -20,9 +27,28 @@ export default {
   name: 'list-view',
   data () {
     return {
+      searchValue: '',
       recipes: []
     }
   },
+  computed: {
+    filteredRecipes: function () {
+      var recipesArray = this.recipes
+      var searchValue = this.searchValue
+      if (!searchValue) {
+        return recipesArray
+      }
+      searchValue = searchValue.trim().toLowerCase()
+
+      recipesArray = recipesArray.filter((val) => {
+        if (val.title.toLowerCase().indexOf(searchValue) !== -1) {
+          return val
+        }
+      })
+      return recipesArray
+    }
+  },
+
   methods: {
     gotoAddRecipe () {
       let routeOptions = {
@@ -78,4 +104,7 @@ section
   position: fixed
   bottom: 0
   right: $dimension-space
+.search-line
+  margin-left: 12px
+  margin-right: 50px
 </style>
