@@ -17,7 +17,6 @@ axios.interceptors.response.use((response) => {
       name: 'Login'
     }
     router.push(routeOptions)
-    return
   }
   return Promise.reject(error)
 })
