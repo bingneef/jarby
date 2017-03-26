@@ -21,15 +21,13 @@
 <script>
 import axios from 'axios'
 import router from '../router'
+import store from '../store'
 
 export default {
   name: 'login',
-  data () {
-    return {
-      currentUser: {
-        email: null,
-        password: null
-      }
+  computed: {
+    currentUser () {
+      return store.state.currentUser
     }
   },
   methods: {
@@ -46,13 +44,6 @@ export default {
         router.push(routeOptions)
       })
     }
-  },
-  beforeRouteEnter (to, from, next) {
-    axios.get('/api/v1/current_user').then(response => {
-      next(vm => {
-        vm.currentUser = response.data
-      })
-    })
   }
 }
 </script>
